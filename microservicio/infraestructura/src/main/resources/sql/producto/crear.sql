@@ -1,0 +1,1 @@
+INSERT INTO producto (nombre, precio) VALUES(:nombre, :precio);
