@@ -20,14 +20,14 @@ pipeline {
         echo "------------>Checkout<------------"
         checkout([
 			$class: 'GitSCM',
-			branches: [[name: '*/main']],
+			branches: [[name: '*/master']],
 			doGenerateSubmoduleConfigurations: false,
 			extensions: [],
 			gitTool: 'Default',
 			submoduleCfg: [],
 			userRemoteConfigs: [[
-				credentialsId: 'GitHub_maordonez',
-				url:'https://github.com/maordonez/adn-backend.git'
+				credentialsId: 'Github_randon93',
+				url:'https://github.com/JavierGarciaDev/Inventario-Arquitectura-Hexagonal.git'
 			]]
 		])
       }
