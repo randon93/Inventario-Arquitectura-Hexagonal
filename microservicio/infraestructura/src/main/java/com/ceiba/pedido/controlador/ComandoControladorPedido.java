@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/pedido")
 @Api(tags = { "Controlador comando pedido"})
 public class ComandoControladorPedido {
 
