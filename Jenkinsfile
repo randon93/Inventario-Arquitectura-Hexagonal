@@ -47,7 +47,7 @@ pipeline {
     stage('Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-	dir("catalogo") {
+	dir("microservicio") {
             sh 'gradle --b ./build.gradle clean'
             sh 'gradle --b ./build.gradle jacocoTestReport'
 	}
@@ -57,7 +57,7 @@ pipeline {
     stage('Static Code Analysis') {
       steps{
           echo '------------>Análisis de código estático<------------'
-	    dir("catalogo") {
+	    dir("microservicio") {
 		withSonarQubeEnv('Sonar') {
                   sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
                 }
@@ -69,7 +69,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-	dir("catalogo") {
+	dir("microservicio") {
 	    sh 'gradle --b ./build.gradle build -x test'
 	}
 
