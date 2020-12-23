@@ -28,5 +28,6 @@ create table inventario (
  usuario int(11) not null,
  cantidad int(4) not null,
  producto int(11) not null,
+ precio_total int(11),
  primary key (id)
  );

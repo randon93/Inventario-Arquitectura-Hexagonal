@@ -11,7 +11,6 @@ public class ComandoPedidoTestDataBuilder {
     private Double precioTotal;
 
     public ComandoPedidoTestDataBuilder() {
-        id = 1l;
         usuario = 1l;
         cantidad = 1;
         producto = 1l;

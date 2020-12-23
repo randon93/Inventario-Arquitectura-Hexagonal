@@ -19,15 +19,12 @@ public class ComandoInventarioTestDataBuilder {
         fechaRecarga = LocalDateTime.now();
         cantidad = 123;
         producto = 1L;
+        id = 1l;
     }
 
     public ComandoInventario build() {
-        return new ComandoInventario(id,
-                producto,
-                cantidad,
-                recargaStock,
-                fechaRecarga,
-                bloqueado
+        return new ComandoInventario(
+                id, producto, cantidad,fechaRecarga, bloqueado,recargaStock
         );
     }
 }

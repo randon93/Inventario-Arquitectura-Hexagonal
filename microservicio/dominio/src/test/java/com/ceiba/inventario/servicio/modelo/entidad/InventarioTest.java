@@ -101,7 +101,7 @@ public class InventarioTest {
                 .build();
 
         inventario.actualizarStock(1);
-        Assert.assertEquals(inventario.getCantidad(), 4, 0);
+        Assert.assertEquals(inventario.getCantidad(), 2, 0);
         Assert.assertEquals(inventario.getRecargaStock(), true);
         Assert.assertEquals(inventario.getBloqueado(), true);
         Assert.assertEquals(

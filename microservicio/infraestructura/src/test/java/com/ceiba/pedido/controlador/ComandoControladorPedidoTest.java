@@ -31,7 +31,7 @@ public class ComandoControladorPedidoTest {
         ComandoPedido comandoPedido = new ComandoPedidoTestDataBuilder().conPrecio().build();
 
         mockMvc.perform(
-                post("/pedidos/save")
+                post("/pedido/save")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoPedido))
         ).andExpect(status().isOk());

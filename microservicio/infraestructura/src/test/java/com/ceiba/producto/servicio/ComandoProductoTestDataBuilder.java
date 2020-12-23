@@ -11,7 +11,7 @@ public class ComandoProductoTestDataBuilder {
     private Float precio;
 
     public ComandoProductoTestDataBuilder() {
-        nombre = "BATMAN";
+        nombre = "BATMAN2";
         precio = 5000f;
         id = 1l;
     }

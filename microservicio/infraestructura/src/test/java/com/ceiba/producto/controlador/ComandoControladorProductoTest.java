@@ -31,12 +31,11 @@ public class ComandoControladorProductoTest {
     @Test
     public void crear() throws Exception {
         ComandoProducto producto = new ComandoProductoTestDataBuilder().build();
-
         mockMvc.perform(
                 post("/producto")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(producto))
-        ).andExpect(status().isOk()).andExpect(content().json("{'valor': 2}"));
+        ).andExpect(status().isOk()).andExpect(content().json("{'valor': 3}"));
     }
 
     @Test

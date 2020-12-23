@@ -8,4 +8,4 @@ insert into producto(nombre, precio) values ('BATMAN',3);
 insert into producto(nombre, precio) values ('SUPERMAN',2);
 
 
-INSERT INTO pedido(usuario,cantidad,producto) VALUES (1,1,1);
+INSERT INTO pedido(usuario,cantidad,producto, precio_total) VALUES (1,1,1,0);
