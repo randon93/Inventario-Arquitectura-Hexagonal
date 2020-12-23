@@ -29,7 +29,9 @@ public class ManejadorCrearPedido {
     public Double ejecutar(ComandoPedido comandoPedido) {
         Pedido pedido = fabricaPedido.crear(comandoPedido);
         servicioRealizarPedidoEnInventario.ejecutar(pedido.getProducto(), pedido.getCantidad());
-        servicioCrearPedido.ejecutar(pedido);
+        Long idPedido = servicioCrearPedido.ejecutar(pedido);
+        comandoPedido.setId(idPedido);
+        pedido = fabricaPedido.crear(comandoPedido);
         return servicioCalcularPrecioTotal.ejecutar(pedido);
     }
 }

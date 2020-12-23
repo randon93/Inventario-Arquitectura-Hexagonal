@@ -11,7 +11,7 @@ public class ServicioCrearPedido {
         this.repositorioPedido = repositorioPedido;
     }
 
-    public void ejecutar(Pedido pedido) {
-        repositorioPedido.crear(pedido);
+    public Long ejecutar(Pedido pedido) {
+       return repositorioPedido.crear(pedido);
     }
 }

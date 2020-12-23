@@ -41,6 +41,5 @@ public class DaoInventarioMysql implements DaoInventario {
         DtoInventario dto = null;
         dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscar, parametros, new MapeoInventario());
         return fabricaInventario.crear(dto);
-
     }
 }

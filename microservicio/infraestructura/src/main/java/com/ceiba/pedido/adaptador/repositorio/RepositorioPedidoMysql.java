@@ -14,6 +14,9 @@ public class RepositorioPedidoMysql implements RepositorioPedido {
     @SqlStatement(namespace="pedido", value="crear")
     private static String sqlCrear;
 
+    @SqlStatement(namespace="pedido", value="actualizar")
+    private static String sqlActualizar;
+
     public RepositorioPedidoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -30,7 +33,7 @@ public class RepositorioPedidoMysql implements RepositorioPedido {
 
     @Override
     public void actualizar(Pedido pedido) {
-
+        this.customNamedParameterJdbcTemplate.actualizar(pedido, sqlActualizar);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class ServicioCalcularPrecioTotal {
         DtoProducto dto = daoProducto.buscarPorId(pedido.getProducto());
         Inventario inventario = daoInventario.buscarPorIdProducto(pedido.getProducto());
         pedido.calcularPrecioTotal(dto.getPrecio().doubleValue(), inventario.getCantidad());
-        //ACTUALIZAR
+        repositorioPedido.actualizar(pedido);
         return pedido.getPrecioTotal();
     }
 }
