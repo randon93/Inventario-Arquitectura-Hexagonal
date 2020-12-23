@@ -38,7 +38,7 @@ pipeline {
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-	dir("catalogo") {
+	dir("microservicio") {
             sh 'gradle --b ./build.gradle clean'
 	}
       }
