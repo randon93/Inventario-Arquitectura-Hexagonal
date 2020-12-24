@@ -33,14 +33,14 @@ public class ServicioRealizarPedidoEnInventario {
     }
 
     public void ejecutar(Inventario inventario, Pedido pedido) {
-
+        validarUsuario(pedido.getUsuario());
         validarPedidoEnInventario(inventario, pedido.getCantidad());
         this.repositorioInventario.actualizar(inventario);
     }
 
     public void validarUsuario(Long usuarioId) {
         Boolean existe = repositorioUsuario.existePorId(usuarioId);
-        if (existe) {
+        if (!existe) {
             throw new ExcepcionObjectoNoEncontrado(USUARIO_NO_ENCONTRADO);
         }
     }

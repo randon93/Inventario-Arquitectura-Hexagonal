@@ -1,6 +1,7 @@
 package com.ceiba.usuario.comando.manejador.inventario;
 
-import com.ceiba.usuario.comando.ComandoInventario;
+import com.ceiba.usuario.comando.inventario.ComandoActualizarInventario;
+import com.ceiba.usuario.comando.inventario.ComandoInventario;
 import com.ceiba.usuario.comando.fabrica.inventario.FabricaInventario;
 import com.ceiba.usuario.modelo.dto.DtoInventario;
 import com.ceiba.usuario.modelo.entidad.Inventario;
@@ -21,9 +22,9 @@ public class ManejadorActualizarInventario {
         this.daoInventario = daoInventario;
     }
 
-    public void ejecutar(ComandoInventario comandoInventario) {
+    public void ejecutar(ComandoActualizarInventario comandoInventario) {
         DtoInventario dto = daoInventario.buscarPorIdProducto(comandoInventario.getProducto());
         Inventario inventario = fabricaInventario.crear(dto);
-        repositorioInventario.ejecutar(inventario);
+        repositorioInventario.ejecutar(inventario, comandoInventario.getCantidad());
     }
 }

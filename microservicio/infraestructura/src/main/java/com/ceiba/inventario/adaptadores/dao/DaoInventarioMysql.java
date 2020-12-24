@@ -1,11 +1,11 @@
 package com.ceiba.inventario.adaptadores.dao;
 
+import com.ceiba.infraestructura.excepcion.ExcepcionTecnica;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.usuario.comando.fabrica.inventario.FabricaInventario;
 import com.ceiba.usuario.modelo.dto.DtoInventario;
-import com.ceiba.usuario.modelo.entidad.Inventario;
 import com.ceiba.usuario.puerto.dao.DaoInventario;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -15,8 +15,9 @@ import java.util.Map;
 @Component
 public class DaoInventarioMysql implements DaoInventario {
 
+    private final static String NO_SE_ENCONTRO_EL_PRODUCTO = "NO SE ENCONTRO EL PRODUCTO CON EL  ";
+
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
-    private final FabricaInventario fabricaInventario;
 
     @SqlStatement(namespace = "inventario", value = "buscarPorIdProducto")
     private static String sqlBuscarPorIdProducto;
@@ -27,9 +28,8 @@ public class DaoInventarioMysql implements DaoInventario {
     @SqlStatement(namespace = "inventario", value = "listar")
     private static String sqListar;
 
-    public DaoInventarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, FabricaInventario fabricaInventario) {
+    public DaoInventarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
-        this.fabricaInventario = fabricaInventario;
     }
 
     @Override
@@ -42,7 +42,11 @@ public class DaoInventarioMysql implements DaoInventario {
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("id", idProdcuto);
         DtoInventario dto = null;
-        dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorIdProducto, parametros, new MapeoInventario());
+        try {
+            dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorIdProducto, parametros, new MapeoInventario());
+        } catch (EmptyResultDataAccessException e) {
+            throw new ExcepcionTecnica(NO_SE_ENCONTRO_EL_PRODUCTO.concat("ID DE PRODUCTO: " + idProdcuto));
+        }
         return dto;
     }
 
@@ -51,7 +55,11 @@ public class DaoInventarioMysql implements DaoInventario {
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("id", id);
         DtoInventario dto = null;
-        dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId, parametros, new MapeoInventario());
+        try {
+            dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId, parametros, new MapeoInventario());
+        }catch (EmptyResultDataAccessException e) {
+            throw new ExcepcionTecnica(NO_SE_ENCONTRO_EL_PRODUCTO.concat("ID: " + id));
+        }
         return dto;
     }
 }

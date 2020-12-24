@@ -17,9 +17,9 @@ public class ServicioActualizarInventario {
         this.daoInventario = daoInventario;
     }
 
-    public void ejecutar(Inventario inventario) {
+    public void ejecutar(Inventario inventario, Integer nuevosJemeplares) {
         validarExistenciaPrevia(inventario.getId());
-        inventario.actualizarStock(inventario.getCantidad());
+        inventario.actualizarStock(nuevosJemeplares);
         repositorioInventario.actualizar(inventario);
     }
 

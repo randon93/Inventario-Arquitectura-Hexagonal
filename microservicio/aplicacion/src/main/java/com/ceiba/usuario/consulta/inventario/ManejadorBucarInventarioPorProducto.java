@@ -17,7 +17,6 @@ public class ManejadorBucarInventarioPorProducto {
     }
 
     public DtoInventario ejecutar(Long id) {
-
         return daoInventario.buscarPorIdProducto(id);
     }
 }

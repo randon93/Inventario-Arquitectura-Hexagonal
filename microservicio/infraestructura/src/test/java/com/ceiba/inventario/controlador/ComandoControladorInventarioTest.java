@@ -3,7 +3,7 @@ package com.ceiba.inventario.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.inventario.servicio.ComandoInventarioTestDataBuilder;
-import com.ceiba.usuario.comando.ComandoInventario;
+import com.ceiba.usuario.comando.inventario.ComandoInventario;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

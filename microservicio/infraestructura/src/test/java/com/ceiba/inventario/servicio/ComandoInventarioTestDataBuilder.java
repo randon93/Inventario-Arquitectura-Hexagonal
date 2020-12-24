@@ -1,6 +1,6 @@
 package com.ceiba.inventario.servicio;
 
-import com.ceiba.usuario.comando.ComandoInventario;
+import com.ceiba.usuario.comando.inventario.ComandoInventario;
 
 import java.time.LocalDateTime;
 

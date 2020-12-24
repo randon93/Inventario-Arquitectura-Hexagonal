@@ -23,7 +23,7 @@ public class MapeoInventario implements RowMapper<DtoInventario>, MapperResult {
         try{
             nombreProducto = resultSet.getNString("nombre_producto");
         }catch (Exception e ) {}
-        return new DtoInventario(id, producto, nombreProducto, cantidad, recarga, fecha, bloqueado);
+        return new DtoInventario(id, producto, nombreProducto, cantidad, fecha, recarga, bloqueado);
     }
 
 }

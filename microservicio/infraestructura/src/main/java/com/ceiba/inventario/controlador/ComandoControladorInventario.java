@@ -1,6 +1,7 @@
 package com.ceiba.inventario.controlador;
 
-import com.ceiba.usuario.comando.ComandoInventario;
+import com.ceiba.usuario.comando.inventario.ComandoActualizarInventario;
+import com.ceiba.usuario.comando.inventario.ComandoInventario;
 import com.ceiba.usuario.comando.manejador.inventario.ManejadorActualizarInventario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +23,7 @@ public class ComandoControladorInventario {
 
     @PutMapping("/actualizar")
     @ApiOperation("Actualiza el stock del inventario de un producto")
-    public void actualizar(@RequestBody ComandoInventario inventario) {
+    public void actualizar(@RequestBody ComandoActualizarInventario inventario) {
         manejadorPedidoInventario.ejecutar(inventario);
     }
 }

@@ -13,8 +13,8 @@ public class DtoInventario {
     private Long producto;
     private String nombreProducto;
     private Integer cantidad;
-    private Boolean recargaStock;
     private LocalDateTime fechaRecarga;
+    private Boolean recargaStock;
     private Boolean bloqueado;
 
 }
