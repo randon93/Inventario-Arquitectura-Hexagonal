@@ -4,10 +4,10 @@ import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.dominio.excepcion.ExcepcionCantidadInsuficiente;
 import lombok.Getter;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarPositivo;
-import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
-
 import java.time.LocalDateTime;
+
+import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
+import static com.ceiba.dominio.ValidadorArgumento.validarPositivo;
 
 @Getter
 public class Inventario {
@@ -61,21 +61,17 @@ public class Inventario {
     }
 
     public void actualizarStock(Integer cantidad) {
-       validarPositivo(cantidad.doubleValue(), CANTIDAD_NEGATIVA);
-       this.cantidad = this.cantidad + cantidad;
-       if (this.cantidad > 5) {
-           this.recargaStock = false;
-           this.bloqueado = false;
-           this.fechaRecarga = LocalDateTime.now();
-           return;
-       }
-       if(this.cantidad <= 2) {
-           this.recargaStock = true;
-           this.bloqueado = true;
-           this.fechaRecarga = LocalDateTime.now();
-           return;
-       }
-        if (this.cantidad <= 5) {
+        validarPositivo(cantidad.doubleValue(), CANTIDAD_NEGATIVA);
+        this.cantidad = this.cantidad + cantidad;
+        if (this.cantidad > 5) {
+            this.recargaStock = false;
+            this.bloqueado = false;
+            this.fechaRecarga = LocalDateTime.now();
+        } else if (this.cantidad <= 2) {
+            this.recargaStock = true;
+            this.bloqueado = true;
+            this.fechaRecarga = LocalDateTime.now();
+        } else {
             this.recargaStock = true;
             this.bloqueado = false;
             this.fechaRecarga = LocalDateTime.now();

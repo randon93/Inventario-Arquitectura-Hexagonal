@@ -32,4 +32,16 @@ public class FabricaInventario {
                 inventario.getBloqueado()
         );
     }
+
+    public DtoInventario crear(Inventario inventario) {
+        return new DtoInventario(
+                inventario.getId(),
+                inventario.getProducto(),
+                "",
+                inventario.getCantidad(),
+                inventario.getRecargaStock(),
+                inventario.getFechaRecarga(),
+                inventario.getBloqueado()
+        );
+    }
 }

@@ -1,6 +1,7 @@
 package com.ceiba.pedido.servicio;
 
 import com.ceiba.pedido.servicio.testDataBuilder.PedidoTestDataBuilder;
+import com.ceiba.usuario.modelo.dto.DtoInventario;
 import com.ceiba.usuario.modelo.dto.DtoProducto;
 import com.ceiba.usuario.modelo.entidad.Inventario;
 import com.ceiba.usuario.modelo.entidad.Pedido;
@@ -35,7 +36,7 @@ public class ServicioCalcularPrecioTotalTest {
     public void calcularPrecioTest() {
         //ini parametros
         DtoProducto producto = Mockito.mock(DtoProducto.class);
-        Inventario inventario = Mockito.mock(Inventario.class);
+        DtoInventario inventario = Mockito.mock(DtoInventario.class);
         Pedido pedido = new PedidoTestDataBuilder().build();
         Float precio = 5f;
         Integer cantidadStock = 3;

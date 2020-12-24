@@ -18,8 +18,11 @@ public class DaoInventarioMysql implements DaoInventario {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final FabricaInventario fabricaInventario;
 
+    @SqlStatement(namespace = "inventario", value = "buscarPorIdProducto")
+    private static String sqlBuscarPorIdProducto;
+
     @SqlStatement(namespace = "inventario", value = "buscarPorId")
-    private static String sqlBuscar;
+    private static String sqlBuscarPorId;
 
     @SqlStatement(namespace = "inventario", value = "listar")
     private static String sqListar;
@@ -35,11 +38,20 @@ public class DaoInventarioMysql implements DaoInventario {
     }
 
     @Override
-    public Inventario buscarPorIdProducto(Long idProdcuto) {
+    public DtoInventario buscarPorIdProducto(Long idProdcuto) {
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("id", idProdcuto);
         DtoInventario dto = null;
-        dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscar, parametros, new MapeoInventario());
-        return fabricaInventario.crear(dto);
+        dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorIdProducto, parametros, new MapeoInventario());
+        return dto;
+    }
+
+    @Override
+    public DtoInventario buscarPorId(Long id) {
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("id", id);
+        DtoInventario dto = null;
+        dto = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId, parametros, new MapeoInventario());
+        return dto;
     }
 }

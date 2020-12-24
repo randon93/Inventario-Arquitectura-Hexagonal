@@ -10,9 +10,12 @@ public interface DaoInventario {
     /**
      * Permite listar inventario
      *
-     * @return los productos
+     * @return los inventarios
      */
     List<DtoInventario> listar();
 
-    Inventario buscarPorIdProducto(Long idProdcuto);
+    DtoInventario buscarPorIdProducto(Long idProdcuto);
+
+    DtoInventario buscarPorId(Long id);
+
 }

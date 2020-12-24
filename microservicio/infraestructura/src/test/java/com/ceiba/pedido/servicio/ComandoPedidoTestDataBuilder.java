@@ -16,6 +16,11 @@ public class ComandoPedidoTestDataBuilder {
         producto = 1l;
     }
 
+    public ComandoPedidoTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoPedidoTestDataBuilder conPrecio() {
         this.precioTotal = 200d;
         return this;

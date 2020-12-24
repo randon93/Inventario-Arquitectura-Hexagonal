@@ -3,6 +3,7 @@ package com.ceiba.inventario.servicio;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.inventario.servicio.testDataBuilder.InventarioTestDataBuilder;
+import com.ceiba.pedido.servicio.testDataBuilder.PedidoTestDataBuilder;
 import com.ceiba.usuario.puerto.dao.DaoInventario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioInventario;
 import com.ceiba.usuario.servicio.inventario.ServicioRealizarPedidoEnInventario;
@@ -36,13 +37,12 @@ public class ServicioRealizarPedidoEnInventarioTest {
     @Test
     public void validarError() {
         LocalDate localDate = LocalDate.of(2020, Month.DECEMBER, 30);
-        Long producto = 1l;
-        Integer pedido = 1;
         Mockito.when(fechaActual.getZone()).thenReturn(ZoneId.systemDefault());
         Mockito.when(fechaActual.instant()).thenReturn(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
+        InventarioTestDataBuilder inventario =  new InventarioTestDataBuilder().conProducto(1l).conCantidad(3).conId(2l);
+        PedidoTestDataBuilder pedido = new PedidoTestDataBuilder().conProducto(1l).conCantidad(1).conUsuario(1l);
         BasePrueba.assertThrows(
-                () -> servicioRealizarPedidoEnInventario.ejecutar(producto, pedido),
+                () -> servicioRealizarPedidoEnInventario.ejecutar(inventario.build(), pedido.build()),
                 ExcepcionLongitudValor.class,
                 "la cantidad de dias asignados superan los dias que tiene el mes"
         );
@@ -51,13 +51,11 @@ public class ServicioRealizarPedidoEnInventarioTest {
     @Test
     public void validarExito() {
         LocalDate localDate = LocalDate.of(2020, Month.DECEMBER, 21);
-        Long producto = 1l;
-        Integer pedido = 1;
         InventarioTestDataBuilder inventario =  new InventarioTestDataBuilder().conProducto(1l).conCantidad(3).conId(2l);
+        PedidoTestDataBuilder pedido = new PedidoTestDataBuilder().conProducto(1l).conCantidad(1).conUsuario(1l);
         Mockito.when(fechaActual.getZone()).thenReturn(ZoneId.systemDefault());
         Mockito.when(fechaActual.instant()).thenReturn(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Mockito.when(daoInventario.buscarPorIdProducto(Mockito.anyLong())).thenReturn(inventario.build());
-        servicioRealizarPedidoEnInventario.ejecutar(producto, pedido);
+        servicioRealizarPedidoEnInventario.ejecutar(inventario.build(), pedido.build());
     }
 
 

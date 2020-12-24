@@ -2,11 +2,12 @@ package com.ceiba.inventario.controlador;
 
 import com.ceiba.usuario.comando.ComandoInventario;
 import com.ceiba.usuario.comando.manejador.inventario.ManejadorActualizarInventario;
-import com.ceiba.usuario.comando.manejador.inventario.ManejadorPedidoInventario;
-import com.ceiba.usuario.modelo.entidad.Inventario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/inventario")

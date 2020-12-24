@@ -20,6 +20,7 @@ create table inventario (
  recarga_stock tinyint(1) not null,
  bloqueado tinyint(1) not null,
  cantidad int(5) not null,
+ UNIQUE (producto),
  primary key (id)
  );
 

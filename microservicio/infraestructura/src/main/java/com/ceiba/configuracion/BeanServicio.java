@@ -70,8 +70,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioRealizarPedidoEnInventario servicioPedidoInventario(RepositorioInventario repositorioInventario, DaoInventario daoInventario, Clock fechaActual) {
-        return new ServicioRealizarPedidoEnInventario(repositorioInventario, daoInventario, fechaActual);
+    public ServicioRealizarPedidoEnInventario servicioPedidoInventario(RepositorioInventario repositorioInventario, DaoInventario daoInventario, RepositorioUsuario repositorioUsuario, Clock fechaActual) {
+        return new ServicioRealizarPedidoEnInventario(repositorioInventario, daoInventario, repositorioUsuario, fechaActual);
     }
 
     @Bean

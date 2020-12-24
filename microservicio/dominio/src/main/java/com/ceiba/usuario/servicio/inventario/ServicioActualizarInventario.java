@@ -2,6 +2,7 @@ package com.ceiba.usuario.servicio.inventario;
 
 import com.ceiba.dominio.excepcion.ExcepcionObjectoNoEncontrado;
 import com.ceiba.usuario.modelo.entidad.Inventario;
+import com.ceiba.usuario.puerto.dao.DaoInventario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioInventario;
 
 public class ServicioActualizarInventario {
@@ -9,7 +10,7 @@ public class ServicioActualizarInventario {
     private static final String INVENTARIO_NO_ENCONTRADO = "El inventario del producto no se encontro.";
 
     private final RepositorioInventario repositorioInventario;
-    private final com.ceiba.usuario.puerto.dao.DaoInventario daoInventario;
+    private final DaoInventario daoInventario;
 
     public ServicioActualizarInventario(RepositorioInventario repositorioInventario, com.ceiba.usuario.puerto.dao.DaoInventario daoInventario) {
         this.repositorioInventario = repositorioInventario;
@@ -18,8 +19,7 @@ public class ServicioActualizarInventario {
 
     public void ejecutar(Inventario inventario) {
         validarExistenciaPrevia(inventario.getId());
-        Inventario inventarioDb = daoInventario.buscarPorIdProducto(inventario.getProducto());
-        inventarioDb.actualizarStock(inventario.getCantidad());
+        inventario.actualizarStock(inventario.getCantidad());
         repositorioInventario.actualizar(inventario);
     }
 

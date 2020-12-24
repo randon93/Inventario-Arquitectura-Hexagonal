@@ -1,6 +1,7 @@
 package com.ceiba.pedido.controlador;
 
 import com.ceiba.ApplicationMock;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ConsultaControladorPedido.class)
 public class ConsultaConrtroladorPedidoTest {
@@ -24,11 +25,12 @@ public class ConsultaConrtroladorPedidoTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Test
     public void listar() throws Exception{
         mockMvc.perform(get("/pedido")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].usuario", is(1)));
+                .andExpect(jsonPath("$[0].id", is(1)));
     }
 }
