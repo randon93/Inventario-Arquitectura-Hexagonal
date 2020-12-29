@@ -65,11 +65,10 @@ public class UtilCalendar {
         LocalDate diaFinalMes  = LocalDate
                 .of(diaActual.getYear(), diaActual.getMonth(), diaActual.getMonth().maxLength());
         Integer diasFaltantes = Period.between(diaActual, diaFinalMes).getDays();
-        if (diasFaltantes <= losUltimosDias ) {
+        if (diasFaltantes < losUltimosDias ) {
             throw new ExcepcionLongitudValor(SUPERA_DIAS_DEL_MES);
         }
         return false;
-
     }
 
     public static Integer diaDelMes() {
