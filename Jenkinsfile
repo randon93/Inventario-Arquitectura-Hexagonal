@@ -33,8 +33,6 @@ pipeline {
       }
     }
 
-
-
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
