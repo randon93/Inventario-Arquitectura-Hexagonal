@@ -35,7 +35,7 @@ public class ConsultaControladorUsuario {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Bucar Usuario")
+    @ApiOperation("Bucar Usuarios")
     public DtoUsuario buscar(@PathVariable Long id) {
         return this.manejadorBuscarUsuario.ejecutar(id);
     }
