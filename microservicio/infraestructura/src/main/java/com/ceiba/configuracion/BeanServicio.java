@@ -20,11 +20,8 @@ import com.ceiba.usuario.servicio.usuario.ServicioCrearUsuario;
 import com.ceiba.usuario.servicio.usuario.ServicioEliminarUsuario;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import java.time.Clock;
-import java.time.LocalDate;
-import java.util.Calendar;
 
 @Configuration
 public class BeanServicio {
@@ -57,7 +54,7 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioEliminarProducto servicioEliminarProducto(RepositorioProducto repositorioInventario, DaoProducto daoProducto){
+    public ServicioEliminarProducto servicioEliminarProducto(RepositorioProducto repositorioInventario, DaoProducto daoProducto) {
         return new ServicioEliminarProducto(repositorioInventario, daoProducto);
     }
 

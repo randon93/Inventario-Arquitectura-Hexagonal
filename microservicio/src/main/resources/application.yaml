@@ -11,6 +11,6 @@ spring:
       type: com.zaxxer.hikari.HikariDataSource
       jdbcUrl: jdbc:mysql://localhost:3306/microservicio?serverTimezone=America/Bogota&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
       username: root
-      password: 332817Convenios
+      password: 332817
       hikari:
          poolName: pool
